@@ -89,12 +89,20 @@ export default function ChatInterface() {
     setInput('');
     setIsLoading(true);
 
+    const API_KEY = 'sk-b5b1275162f849df9fa6c83461cdeeed';
+    const apiUrl = 'https://api.deepseek.com/chat/completions';
+
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${API_KEY}`,
+        },
         body: JSON.stringify({
-          messages: [...messages, userMessage].map(({ role, content }) => ({ role, content }))
+          model: 'deepseek-chat',
+          messages: [...messages, userMessage].map(({ role, content }) => ({ role, content })),
+          stream: true,
         }),
       });
 
