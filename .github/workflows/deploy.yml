@@ -25,6 +25,8 @@ jobs:
         run: npm ci
 
       - name: Build Astro
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: npm run build
 
       - name: Deploy to GitHub Pages
