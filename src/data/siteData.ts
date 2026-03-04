@@ -30,6 +30,8 @@ export const skills = [
   { name: 'Git', url: 'https://git-scm.com/' }
 ];
 
+const base = '/calmspark';
+
 export const galleryItems = [
   { 
     id: 'g1', 
@@ -56,7 +58,7 @@ export const galleryItems = [
     id: 'g5', 
     title: 'Abstract Chaos', 
     category: 'photo',
-    image: '/wx1.jpg',
+    image: base + '/wx1.jpg',
     desc: 'The beauty of disorder.'
   },
   { 
