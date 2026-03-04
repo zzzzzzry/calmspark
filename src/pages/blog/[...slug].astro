@@ -14,6 +14,7 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await post.render();
+const base = '/calmspark';
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
@@ -30,7 +31,7 @@ const { Content } = await post.render();
             </time>
          </div>
          <h1 class="text-3xl md:text-5xl font-bold text-primary-900 dark:text-white mb-6 !leading-tight">{post.data.title}</h1>
-         {post.data.heroImage && <img width={1020} height={510} src={post.data.heroImage} alt="" class="rounded-xl shadow-2xl w-full" />}
+         {post.data.heroImage && <img width={1020} height={510} src={base + post.data.heroImage} alt="" class="rounded-xl shadow-2xl w-full" />}
       </div>
       <div class="prose-headings:font-sans prose-a:text-primary-600 dark:prose-a:text-primary-400">
         <Content />

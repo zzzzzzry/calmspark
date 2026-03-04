@@ -28,7 +28,7 @@ const posts = (await getCollection('blog')).sort(
           <GlassCard class="p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start">
              {post.data.heroImage && (
                 <div class="w-full md:w-48 aspect-video rounded-lg overflow-hidden flex-shrink-0">
-                    <img src={post.data.heroImage} alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={base + post.data.heroImage} alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
              )}
              <div class="flex-grow space-y-3">
