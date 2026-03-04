@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  output: 'static',
+  site: 'https://zzzzzzry.github.io',
   base: '/calmspark',
   integrations: [react(), tailwind()]
 });

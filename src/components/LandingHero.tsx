@@ -4,6 +4,8 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useStore } from '@nanostores/react';
 import { currentIndex, slides, nextSlide, prevSlide, setSlide } from '../stores/bgStore';
 
+const base = '/calmspark';
+
 export default function LandingHero() {
   const index = useStore(currentIndex);
 
@@ -80,7 +82,7 @@ export default function LandingHero() {
             className="mt-16 flex flex-col sm:flex-row items-center gap-6"
         >
             <a 
-                href="/works" 
+                href={base + '/works'} 
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
             >
                 <span>查看代表作品</span>
@@ -88,7 +90,7 @@ export default function LandingHero() {
             </a>
             
             <a 
-                href="/resume" 
+                href={base + '/resume'} 
                 className="group inline-flex items-center gap-3 px-8 py-4 bg-gray-900/80 hover:bg-black border border-white/30 text-white rounded-full font-medium text-lg transition-all duration-300 hover:scale-105 hover:border-white/60"
             >
                 <span>下载简历</span>

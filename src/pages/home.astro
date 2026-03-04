@@ -2,27 +2,29 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ArrowRight, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 
+const base = '/calmspark';
+
 const sections = [
   {
     title: "文字，思考的沉淀。",
     desc: "在这个信息碎片化的时代，我选择用文字记录深度思考。不追求流量，只求思想的共鸣与沉淀。",
-    image: "/school1.jpg",
-    align: "center", // text-center, image-bottom
+    image: base + "/school1.jpg",
+    align: "center",
     theme: "light"
   },
   {
     title: "代码，构建世界。",
     desc: "每一行代码都是逻辑的诗篇。从后端架构到前端交互，探索全栈开发的无限可能，创造有温度的数字产品。",
-    image: "/zhi1.jpg",
-    align: "left", // text-left, image-right
+    image: base + "/zhi1.jpg",
+    align: "left",
     theme: "gray",
-    imagePosition: "90% 60%" // Focus on lower part
+    imagePosition: "90% 60%"
   },
   {
     title: "生活，不仅是远方。",
     desc: "放慢脚步，感受城市的脉搏。在北京的街头巷尾，发现那些被忽略的平凡美好。",
-    image: "/beijing1.jpg",
-    align: "right", // text-right, image-left
+    image: base + "/beijing1.jpg",
+    align: "right",
     theme: "light"
   }
 ];
@@ -39,7 +41,7 @@ const sections = [
          
          <!-- Avatar -->
          <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-white/50 shadow-xl mb-4 backdrop-blur-sm">
-            <img src="/icon.png" alt="Avatar" class="w-full h-full object-cover" />
+            <img src={base + "/icon.png"} alt="Avatar" class="w-full h-full object-cover" />
          </div>
 
          <h2 class="text-sm font-bold tracking-[0.2em] text-white/80 uppercase mb-4 drop-shadow-md">Personal Blog</h2>
@@ -52,10 +54,10 @@ const sections = [
          </p>
          
          <div class="pt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="/chat" class="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-medium transition-all shadow-lg hover:shadow-purple-600/30 hover:scale-105 flex items-center gap-2 backdrop-blur-md border border-white/10">
+            <a href={base + "/chat"} class="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-medium transition-all shadow-lg hover:shadow-purple-600/30 hover:scale-105 flex items-center gap-2 backdrop-blur-md border border-white/10">
                <Sparkles size={18} /> AI 助手
             </a>
-            <a href="/blog" class="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all shadow-lg hover:shadow-blue-600/30 hover:scale-105 flex items-center gap-2">
+            <a href={base + "/blog"} class="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all shadow-lg hover:shadow-blue-600/30 hover:scale-105 flex items-center gap-2">
                阅读博客 <ArrowRight size={18} />
             </a>
             <a href="#section-0" class="px-8 py-3 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium transition-all border border-white/30 hover:scale-105">
@@ -101,7 +103,7 @@ const sections = [
                    {section.desc}
                  </p>
                  <div class="pt-4">
-                   <a href="/gallery" class="inline-flex items-center text-blue-400 font-medium hover:gap-2 transition-all hover:text-blue-300">
+                   <a href={base + "/gallery"} class="inline-flex items-center text-blue-400 font-medium hover:gap-2 transition-all hover:text-blue-300">
                      查看详情 <ArrowRight size={18} className="ml-1" />
                    </a>
                  </div>
@@ -126,7 +128,7 @@ const sections = [
     <!-- Final CTA Section -->
     <section id="contact" class="w-full py-32 mt-12 text-white text-center px-4 relative overflow-hidden rounded-3xl border border-white/10">
        <div class="absolute inset-0 bg-black/60 z-0"></div>
-       <img src="/beijing2.jpg" alt="Contact Background" class="absolute inset-0 w-full h-full object-cover -z-10" />
+       <img src={base + "/beijing2.jpg"} alt="Contact Background" class="absolute inset-0 w-full h-full object-cover -z-10" />
        
        <div class="relative z-10 max-w-3xl mx-auto space-y-8">
           <h2 class="text-4xl md:text-6xl font-bold drop-shadow-lg">准备好开始了吗？</h2>

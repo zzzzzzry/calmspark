@@ -1,5 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = '/calmspark';
 ---
 
 <footer class="py-12 mt-auto border-t border-white/10 bg-transparent">
@@ -12,7 +13,7 @@ const currentYear = new Date().getFullYear();
     <div class="flex space-x-8 mt-6 md:mt-0">
       <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors hover:scale-110 transform duration-300">GitHub</a>
       <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors hover:scale-110 transform duration-300">Twitter</a>
-      <a href="/rss.xml" class="hover:text-white transition-colors hover:scale-110 transform duration-300">RSS</a>
+      <a href={base + '/rss.xml'} class="hover:text-white transition-colors hover:scale-110 transform duration-300">RSS</a>
     </div>
   </div>
 </footer>
