@@ -5,5 +5,8 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://zzzzzzry.github.io',
   base: '/calmspark',
+  build: {
+    format: 'file'
+  },
   integrations: [react(), tailwind()]
 });
