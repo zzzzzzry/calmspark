@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LandingHero from '../components/LandingHero';
+---
+
+<BaseLayout title="探索无限" className="flex items-center justify-center min-h-[80vh]">
+  <LandingHero client:only="react" />
+</BaseLayout>

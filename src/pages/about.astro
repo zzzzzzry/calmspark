@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactLinks from '../components/ContactLinks';
+---
+
+<BaseLayout title="关于 | About">
+  <div class="max-w-6xl mx-auto px-4 py-16 md:py-20 animate-fade-in">
+    <section class="rounded-3xl border border-white/12 bg-black/35 p-6 md:p-10 backdrop-blur-md">
+      <div class="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
+        <div class="space-y-5">
+          <p class="text-xs font-semibold tracking-[0.25em] text-white/55 uppercase">关于我</p>
+          <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight">CalmSpark · 全栈开发者</h1>
+          <p class="text-base text-white/75 max-w-2xl leading-relaxed">
+            我做产品时的核心原则很简单：先解决问题，再追求风格。擅长从需求拆解到体验落地，把抽象想法变成稳定可迭代的系统。
+          </p>
+          <div class="flex flex-wrap gap-2.5 text-xs text-white/82">
+            <span class="rounded-full border border-white/16 bg-white/6 px-3 py-1.5">Full-stack Development</span>
+            <span class="rounded-full border border-white/16 bg-white/6 px-3 py-1.5">UI / UX Design</span>
+            <span class="rounded-full border border-white/16 bg-white/6 px-3 py-1.5">Photography & Writing</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-emerald-300/20 bg-emerald-400/10 p-4 md:p-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200/80">当前状态</p>
+          <div class="mt-3 flex items-start gap-3 text-sm text-emerald-100/90 leading-relaxed">
+            <span class="relative mt-1 flex h-2.5 w-2.5 shrink-0">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-80"></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+            </span>
+            <span>正在寻找全栈开发或 UI 设计相关的远程 / 全职机会。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mt-8 grid gap-8 md:grid-cols-[minmax(0,1.8fr)_minmax(0,1fr)]">
+      <section class="rounded-2xl border border-white/12 bg-black/30 p-6 md:p-8">
+        <h2 class="mb-6 text-2xl font-bold text-white md:text-3xl">我的方法</h2>
+        <div class="space-y-6 text-white/78 leading-relaxed">
+          <p>
+            我专注于在
+            <strong class="text-white font-semibold">设计与技术的交叉点</strong>
+            解决真实问题。代码对我来说不是堆功能，而是把复杂度收敛成可维护结构。
+          </p>
+          <p>
+            在快速变化的环境里，我坚持“
+            <span class="text-white border-b border-white/30">剔除繁杂，保留本质</span>
+            ”。产品该有辨识度，但更该有清晰的信息层级和稳定的长期演进能力。
+          </p>
+          <p>
+            除了开发，我也长期做摄影与写作训练观察力。很多体验细节并不来自框架文档，而来自对现实场景的持续感知。
+          </p>
+        </div>
+      </section>
+
+      <aside class="space-y-6">
+        <section class="rounded-2xl border border-white/12 bg-black/30 p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">专注领域</p>
+          <ul class="mt-4 space-y-2.5 text-sm text-white/78 leading-relaxed">
+            <li>· 以清晰信息层级打造高质量界面。</li>
+            <li>· 在前后端之间自由切换，快速验证与交付。</li>
+            <li>· 用影像与文字反哺产品叙事能力。</li>
+          </ul>
+        </section>
+
+        <section class="rounded-2xl border border-white/12 bg-black/30 p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">合作偏好</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="rounded-full border border-white/14 bg-white/6 px-3 py-1 text-xs text-white/80">SaaS 产品</span>
+            <span class="rounded-full border border-white/14 bg-white/6 px-3 py-1 text-xs text-white/80">品牌官网</span>
+            <span class="rounded-full border border-white/14 bg-white/6 px-3 py-1 text-xs text-white/80">设计工程化</span>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <div class="mt-10">
+      <ContactLinks client:idle />
+    </div>
+  </div>
+</BaseLayout>

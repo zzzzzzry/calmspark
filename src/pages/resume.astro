@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InteractiveResume from '../components/InteractiveResume.tsx';
+---
+
+<BaseLayout title="简历 | Resume" className="!max-w-none !px-0 !pt-0 !pb-0 !mx-0">
+  <div class="relative z-10">
+    <InteractiveResume client:load />
+  </div>
+</BaseLayout>

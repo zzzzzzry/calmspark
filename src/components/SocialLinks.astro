@@ -1,0 +1,24 @@
+---
+import { Github, Twitter, Mail, Linkedin } from 'lucide-react';
+
+const socialLinks = [
+  { icon: Github, href: "https://github.com", label: "GitHub" },
+  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+];
+---
+
+<div class="flex gap-4 justify-center">
+  {socialLinks.map(({ icon: Icon, href, label }) => (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      class="p-2 rounded-full text-secondary-600 dark:text-white/80 hover:text-primary-600 dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
+    >
+      <Icon size={20} />
+    </a>
+  ))}
+</div>

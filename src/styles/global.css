@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-secondary-900 dark:bg-black dark:text-gray-100 transition-colors duration-300 antialiased;
+    
+    /* Removed background images for clean OPPO/VIVO style */
+  }
+
+  /* Removed Overlay */
+
+  .dark body {
+     /* Dark mode specific clean background if needed */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans tracking-tight text-primary-900 dark:text-primary-100;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary-400/80 dark:bg-white/30 rounded-full border border-transparent bg-clip-content;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-secondary-500/70 dark:bg-white/40;
+  }
+}
+
+.prose {
+  @apply max-w-none;
+}

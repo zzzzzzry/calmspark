@@ -1,0 +1,27 @@
+---
+const techStack = [
+  { name: 'Astro', icon: '🚀' },
+  { name: 'React', icon: '⚛️' },
+  { name: 'TypeScript', icon: '📘' },
+  { name: 'Tailwind', icon: '🎨' },
+  { name: 'Node.js', icon: '🟢' },
+  { name: 'Next.js', icon: 'N' },
+  { name: 'Python', icon: '🐍' },
+  { name: 'Git', icon: '📦' },
+];
+---
+
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 hidden md:flex">
+  <div class="flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/50 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-2xl">
+    {techStack.map((tech) => (
+      <div 
+        class="group relative flex items-center justify-center w-10 h-10 rounded-xl bg-white/40 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/20 border border-white/20 transition-all duration-300 hover:-translate-y-2 hover:scale-110 cursor-help"
+      >
+        <span class="text-xl">{tech.icon}</span>
+        <span class="absolute -top-10 px-2 py-1 text-xs font-medium text-white bg-black/80 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+          {tech.name}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>

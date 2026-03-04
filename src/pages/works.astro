@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { WorksGrid } from '../components/WorksGrid';
+import { galleryItems } from '../data/siteData';
+
+// 1. Fetch Blog Posts
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// 3. Helper to determine category from tags
+function getCategoryFromTags(tags: string[] = []): string {
+  if (tags.some(t => ['tech', 'code', 'dev', 'programming'].includes(t.toLowerCase()))) return 'tech';
+  if (tags.some(t => ['life', 'personal', 'journal'].includes(t.toLowerCase()))) return 'life';
+  if (tags.some(t => ['writing', 'copy', 'essay', 'poetry'].includes(t.toLowerCase()))) return 'writing';
+  return 'life'; // Default
+}
+
+// 4. Combine and Process Data for Bento Grid
+const rawWorks = [
+  ...sortedPosts.map(post => ({
+    id: post.slug,
+    type: 'blog' as const,
+    title: post.data.title,
+    desc: post.data.description,
+    image: post.data.heroImage || '/placeholder-blog.jpg',
+    category: getCategoryFromTags(post.data.tags),
+    date: post.data.pubDate,
+    link: `/blog/${post.slug}`,
+    tags: post.data.tags
+  })),
+  ...galleryItems.map(item => ({
+    id: item.id,
+    type: 'gallery' as const,
+    title: item.title,
+    desc: item.desc,
+    image: item.image,
+    category: 'photo',
+    date: new Date(),
+    link: ''
+  }))
+];
+
+// Assign Bento Sizes based on index/pattern
+const worksWithSizes = rawWorks.map((item, index) => {
+  let size: 'normal' | 'wide' | 'tall' | 'large' = 'normal';
+  
+  if (index === 0) size = 'large';
+  else if (index === 3) size = 'wide';
+  else if (index === 6) size = 'tall';
+  else if (index === 9) size = 'wide';
+  else if (item.category === 'photo' && index % 4 === 0) size = 'tall';
+
+  return { ...item, size };
+});
+---
+
+<BaseLayout title="Works | 作品">
+  <!-- Removed local fixed background to use Global Persistent Background -->
+
+  <div class="relative z-20 w-full max-w-[1600px] mx-auto px-4 sm:px-8 pt-10 pb-20 flex flex-col items-center">
+    
+    <!-- Header Section -->
+    <div class="text-center mb-20 space-y-6 animate-fade-in">
+      <h1 class="text-6xl md:text-8xl font-bold text-white tracking-tighter drop-shadow-2xl">
+        WORKS
+      </h1>
+      <div class="h-1 w-20 bg-white/50 mx-auto rounded-full"></div>
+      <p class="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto font-light tracking-wide font-sans">
+        Design / Code / Photography / Life
+      </p>
+    </div>
+
+    <!-- Main Grid -->
+    <WorksGrid client:load items={worksWithSizes} />
+
+    <!-- Blog Navigation -->
+    <div class="mt-24 text-center animate-fade-in">
+      <h3 class="text-2xl font-bold text-white mb-6">想要了解更多创作背后的故事？</h3>
+      <a href="/blog" class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-100 transition-colors shadow-lg hover:scale-105 transform duration-300">
+        访问博客 <span class="text-xl">→</span>
+      </a>
+    </div>
+ 
+  </div>
+</BaseLayout>

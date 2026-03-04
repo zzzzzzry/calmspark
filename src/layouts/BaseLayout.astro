@@ -1,0 +1,71 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import GlobalBackground from '../components/GlobalBackground';
+import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+  className?: string;
+}
+
+const { title, description = "A calm, minimal personal website.", className = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+    <style is:global>
+      /* Page Transition Animation */
+      ::view-transition-old(root) {
+        animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+                   300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+      }
+
+      ::view-transition-new(root) {
+        animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+                   300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+      }
+
+      @keyframes fade-out {
+        to { opacity: 0; }
+      }
+
+      @keyframes slide-from-right {
+        from { transform: translateX(30px); }
+      }
+
+      @keyframes slide-to-left {
+        to { transform: translateX(-30px); }
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen text-white">
+    <!-- Global Persistent Background -->
+    <div transition:persist>
+      <GlobalBackground client:load />
+    </div>
+
+    <Header />
+    
+    <!-- Main Content -->
+    <main class={`flex-grow w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 animate-fade-in ${className}`}>
+      <slot />
+    </main>
+    
+    <Footer />
+  </body>
+</html>

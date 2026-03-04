@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GlassCard from '../components/GlassCard.astro';
+
+const images = [
+  { 
+    id: 1, 
+    title: '迷雾山脉', 
+    category: '自然',
+    url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop',
+    desc: '清晨的雾气笼罩着连绵起伏的山峦。'
+  },
+  { 
+    id: 2, 
+    title: '都市夜色', 
+    category: '城市',
+    url: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=2064&auto=format&fit=crop',
+    desc: '繁华都市在夜幕下的霓虹闪烁。'
+  },
+  { 
+    id: 3, 
+    title: '极简空间', 
+    category: '建筑',
+    url: 'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=2067&auto=format&fit=crop',
+    desc: '光影在几何线条间跳跃。'
+  },
+  { 
+    id: 4, 
+    title: '工作台', 
+    category: '生活',
+    url: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop',
+    desc: '创造力的诞生地，整洁而有序。'
+  },
+  { 
+    id: 5, 
+    title: '抽象纹理', 
+    category: '艺术',
+    url: '/wx1.jpg',
+    position: 'center center',
+    desc: '色彩与形状的无序碰撞。'
+  },
+  { 
+    id: 6, 
+    title: '深林幽径', 
+    category: '自然',
+    url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop',
+    desc: '通往未知的静谧小路。'
+  },
+];
+---
+
+<BaseLayout title="作品">
+  <div class="space-y-8 animate-fade-in">
+    <div class="border-b border-white/20 pb-8">
+      <h1 class="text-3xl font-bold text-primary-900 dark:text-white mb-4">视觉作品</h1>
+      <p class="text-secondary-600 dark:text-secondary-400">记录瞬间，捕捉灵感。</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {images.map((img) => (
+        <GlassCard class="group relative aspect-square !p-0 overflow-hidden cursor-pointer">
+           <div class="w-full h-full transition-transform duration-700 group-hover:scale-110">
+             <img 
+                src={img.url} 
+                alt={img.title}
+                class="w-full h-full object-cover"
+                style={{ objectPosition: img.position || 'center' }}
+                loading="lazy"
+             />
+           </div>
+           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+             <p class="text-secondary-300 text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75 mb-1">{img.category}</p>
+             <p class="text-white font-medium text-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+               {img.title}
+             </p>
+             <p class="text-white/70 text-xs mt-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100 opacity-0 group-hover:opacity-100 line-clamp-2">
+                {img.desc}
+             </p>
+           </div>
+        </GlassCard>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
